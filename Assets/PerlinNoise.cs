@@ -75,5 +75,16 @@ public class PerlinNoise : MonoBehaviour
         }
     }
 
-
+    void HandleScale()
+    {
+        Vector2 scrollDelta = Input.mouseScrollDelta;
+        if (scrollDelta.y > 0)
+        {
+            scale += scrollSpeed * Time.deltaTime;
+        }
+        else if (scrollDelta.y < 0)
+        {
+            scale -= scrollSpeed * Time.deltaTime;
+        }
+    }
 }
