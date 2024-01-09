@@ -1,5 +1,6 @@
 {
   "dependencies": {
+<<<<<<< HEAD
     "com.unity.2d.common": {
       "version": "8.0.1",
       "depth": 1,
@@ -39,6 +40,8 @@
       },
       "url": "https://packages.unity.com"
     },
+=======
+>>>>>>> b4b16123d029c3e271fd9b386dfb225dfdae1ee8
     "com.unity.collab-proxy": {
       "version": "2.2.0",
       "depth": 0,
@@ -99,6 +102,7 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+<<<<<<< HEAD
     "com.unity.mathematics": {
       "version": "1.2.6",
       "depth": 1,
@@ -106,6 +110,8 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+=======
+>>>>>>> b4b16123d029c3e271fd9b386dfb225dfdae1ee8
     "com.unity.performance.profile-analyzer": {
       "version": "1.2.2",
       "depth": 1,
