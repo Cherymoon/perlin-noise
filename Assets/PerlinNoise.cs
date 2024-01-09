@@ -8,6 +8,7 @@ public class PerlinNoise : MonoBehaviour
 
     [SerializeField] float xOffset;
     [SerializeField] float yOffset;
+    [SerializeField] float scrollSpeed;
 
     private MeshRenderer renderer;
 
@@ -21,6 +22,9 @@ public class PerlinNoise : MonoBehaviour
     void Update()
     {
         renderer.material.mainTexture = GenerateTexture();
+
+        HandleOffset();
+        HandleScale();
     }
 
     Texture2D GenerateTexture()
@@ -49,4 +53,27 @@ public class PerlinNoise : MonoBehaviour
 
         return new Color(sample, sample, sample);
     }
+
+    void HandleOffset()
+    {
+        if (Input.GetKey(KeyCode.D))
+        {
+            xOffset += scrollSpeed * Time.deltaTime;
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            xOffset -= scrollSpeed * Time.deltaTime;
+        }
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            yOffset += scrollSpeed * Time.deltaTime;
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            yOffset -= scrollSpeed * Time.deltaTime;
+        }
+    }
+
+
 }
