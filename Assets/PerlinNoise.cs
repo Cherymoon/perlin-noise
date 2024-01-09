@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.XR;
 
 public class PerlinNoise : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PerlinNoise : MonoBehaviour
     [SerializeField] float xOffset;
     [SerializeField] float yOffset;
     [SerializeField] float scrollSpeed;
+    [SerializeField] float scaleScrollSpeed;
 
     private MeshRenderer renderer;
 
@@ -23,8 +25,7 @@ public class PerlinNoise : MonoBehaviour
     {
         renderer.material.mainTexture = GenerateTexture();
 
-        HandleOffset();
-        HandleScale();
+        HandleNoisePosition();
     }
 
     Texture2D GenerateTexture()
@@ -54,6 +55,12 @@ public class PerlinNoise : MonoBehaviour
         return new Color(sample, sample, sample);
     }
 
+    void HandleNoisePosition()
+    {
+        HandleOffset();
+        HandleScale();
+    }
+
     void HandleOffset()
     {
         if (Input.GetKey(KeyCode.D))
@@ -80,11 +87,11 @@ public class PerlinNoise : MonoBehaviour
         Vector2 scrollDelta = Input.mouseScrollDelta;
         if (scrollDelta.y > 0)
         {
-            scale += scrollSpeed * Time.deltaTime;
+            scale -= (scaleScrollSpeed + scale/2) * Time.deltaTime;
         }
         else if (scrollDelta.y < 0)
         {
-            scale -= scrollSpeed * Time.deltaTime;
+            scale += (scaleScrollSpeed + scale/2) * Time.deltaTime;
         }
     }
 }
