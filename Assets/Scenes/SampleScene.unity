@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 2060028992}
   - component: {fileID: 2060028995}
   m_Layer: 0
-  m_Name: Quad
+  m_Name: NoisePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -318,6 +318,7 @@ MonoBehaviour:
   yOffset: 10
   scrollSpeed: 8
   scaleScrollSpeed: 12
+  selectPoint: {x: 0, y: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
