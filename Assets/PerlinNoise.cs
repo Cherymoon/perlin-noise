@@ -12,6 +12,7 @@ public class PerlinNoise : MonoBehaviour
     [SerializeField] float scrollSpeed;
     [SerializeField] float scaleScrollSpeed;
 
+    [SerializeField] Vector2 selectPoint;
     private MeshRenderer renderer;
 
     void Start()
@@ -80,6 +81,28 @@ public class PerlinNoise : MonoBehaviour
         {
             yOffset -= scrollSpeed * Time.deltaTime;
         }
+
+        HandleOffsetOnMouseDrag();
+    }
+
+    void HandleOffsetOnMouseDrag()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0) && selectPoint != null)
+        {
+            selectPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }
+        else if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            selectPoint = Vector2.zero;
+        }
+
+        if (selectPoint != Vector2.zero)
+        {
+            Vector2 direction = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2)selectPoint;
+
+            xOffset += direction.x * scrollSpeed * Time.deltaTime;
+            yOffset += direction.y * scrollSpeed * Time.deltaTime;
+        }
     }
 
     void HandleScale()
@@ -87,11 +110,11 @@ public class PerlinNoise : MonoBehaviour
         Vector2 scrollDelta = Input.mouseScrollDelta;
         if (scrollDelta.y > 0)
         {
-            scale -= (scaleScrollSpeed + scale/2) * Time.deltaTime;
+            scale -= (scaleScrollSpeed + scale / 2) * Time.deltaTime;
         }
         else if (scrollDelta.y < 0)
         {
-            scale += (scaleScrollSpeed + scale/2) * Time.deltaTime;
+            scale += (scaleScrollSpeed + scale / 2) * Time.deltaTime;
         }
     }
 }
